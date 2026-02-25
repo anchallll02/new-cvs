@@ -4,6 +4,20 @@ import networksecurity from "../assets/Photos/network.png";
 import digitalforensics from "../assets/Photos/digitalforensics.png";
 import dataloss from "../assets/Photos/dataloss.png";
 import zerosecurity from "../assets/Photos/zerosecurity.png";
+import iot_edge from "../assets/Photos/iot_edge.jpeg";
+import system_sec from "../assets/Photos/System_sec.jpeg";
+import adhaar_sec from "../assets/Photos/adhaar_sec.jpeg";
+import cloud_sec from "../assets/Photos/cloud_sec.jpeg";
+import application_sec from "../assets/Photos/application_sec.jpeg";
+import vapt from "../assets/Photos/vapt.jpeg";
+import soc from "../assets/Photos/soc.jpeg";
+import risk_management from "../assets/Photos/risk_management.png";
+import endpoint_sec from "../assets/Photos/endpoint_sec.png";
+import email_sec from "../assets/Photos/email_sec.png";
+import iam from "../assets/Photos/iam.png";
+import incident from "../assets/Photos/incident.png";
+import threat_intelligence from "../assets/Photos/threat_intelligence.png";
+import cybersecurity_consulting from "../assets/Photos/cybersecurity_consulting.png";
 const Services = () => {
   const [activeService, setActiveService] = useState(null);
   const location = useLocation();
@@ -18,7 +32,7 @@ const Services = () => {
       desc:
         "Protect connected devices and distributed edge networks from modern cyber threats and vulnerabilities.",
       image:
-        "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
+        iot_edge,
       details: {
         overview:
           "Advanced protection for IoT ecosystems and distributed edge infrastructure ensuring secure device communication and monitoring.",
@@ -37,7 +51,7 @@ const Services = () => {
       desc:
         "Comprehensive audits to identify vulnerabilities, compliance gaps, and operational security risks.",
       image:
-        "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1200&q=80",
+        system_sec,
       details: {
         overview:
           "Structured system assessments covering identification, analysis, remediation, and compliance validation.",
@@ -56,7 +70,7 @@ const Services = () => {
       desc:
         "Ensure Aadhaar-enabled systems fully comply with UIDAI security standards and guidelines.",
       image:
-        "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
+        adhaar_sec,
       details: {
         overview:
           "Comprehensive review of Aadhaar systems ensuring encryption, compliance, and access controls meet UIDAI standards.",
@@ -75,7 +89,7 @@ const Services = () => {
       desc:
         "Secure public, private, and hybrid cloud environments from misconfigurations and breaches.",
       image:
-        "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80",
+        cloud_sec,
       details: {
         overview:
           "End-to-end cloud posture management, identity governance, and real-time threat detection.",
@@ -113,7 +127,7 @@ const Services = () => {
       desc:
         "Identify and eliminate vulnerabilities in web, mobile, and enterprise applications.",
       image:
-        "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&w=1200&q=80",
+        application_sec,
       details: {
         overview:
           "Secure SDLC implementation and continuous security testing for robust application defense.",
@@ -132,7 +146,7 @@ const Services = () => {
       desc:
         "Simulate real-world attacks to uncover and remediate exploitable weaknesses.",
       image:
-        "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&w=1200&q=80",
+        vapt,
       details: {
         overview:
           "Ethical hacking techniques to detect and remediate vulnerabilities before attackers exploit them.",
@@ -151,7 +165,7 @@ const Services = () => {
       desc:
         "24/7 threat monitoring, detection, and rapid incident response services.",
       image:
-        "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
+        soc,
       details: {
         overview:
           "Round-the-clock monitoring using SIEM and advanced threat intelligence platforms.",
@@ -190,7 +204,7 @@ const Services = () => {
       desc:
         "Ensure regulatory compliance while reducing enterprise security risks.",
       image:
-        "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+        risk_management,
       details: {
         overview:
           "Governance, risk, and compliance frameworks tailored to enterprise needs.",
@@ -209,7 +223,7 @@ const Services = () => {
       desc:
         "Protect laptops, desktops, and mobile devices from ransomware and malware.",
       image:
-        "https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&q=80",
+        endpoint_sec,
       details: {
         overview:
           "Advanced endpoint detection and response solutions for device-level security.",
@@ -228,7 +242,7 @@ const Services = () => {
       desc:
         "Prevent phishing, spoofing, and malware-based email attacks.",
       image:
-        "https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=1200&q=80",
+        email_sec,
       details: {
         overview:
           "Comprehensive email filtering, DMARC setup, and threat detection.",
@@ -285,7 +299,7 @@ const Services = () => {
       desc:
         "Centralize and secure digital identity lifecycle management.",
       image:
-        "https://images.unsplash.com/photo-1584438784894-089d6a62b8fa?auto=format&fit=crop&w=1200&q=80",
+        iam,
       details: {
         overview:
           "Comprehensive identity governance with MFA and privileged access management.",
@@ -304,7 +318,7 @@ const Services = () => {
       desc:
         "Rapid containment and recovery from cybersecurity incidents.",
       image:
-        "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1200&q=80",
+        incident,
       details: {
         overview:
           "Complete lifecycle response from detection to recovery.",
@@ -323,7 +337,7 @@ const Services = () => {
       desc:
         "Proactively monitor emerging threats and global threat actors.",
       image:
-        "https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=1200&q=80",
+        threat_intelligence,
       details: {
         overview:
           "Actionable insights through real-time threat feeds and dark web monitoring.",
@@ -342,7 +356,7 @@ const Services = () => {
       desc:
         "Strategic advisory services to design and strengthen security posture.",
       image:
-        "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80",
+        cybersecurity_consulting,
       details: {
         overview:
           "Expert-led strategy development and security architecture design.",
