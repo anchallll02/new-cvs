@@ -19,7 +19,7 @@ const Home = () => {
       {/* ================= HERO SECTION ================= */}
       <section
         id="home"
-        className="relative h-auto lg:min-h-[85vh] flex items-start pt-20 pb-16 lg:pb-24
+        className="relative h-auto lg:min-h-[85vh] flex items-start pt-16 lg:pt20 pb-16 lg:pb-24
         bg-[linear-gradient(120deg,#ffffff_55%,#0b2a5b_45%)]"
       >
         {/* Background Effects */}
