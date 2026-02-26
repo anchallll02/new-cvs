@@ -1,4 +1,29 @@
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Navbar from "./Components/Navbar";
+import Home from "./Pages/Home";
+import Services from "./Pages/Services";
+import ServicesDetails from "./Pages/ServicesDetails";
+import About from "./Pages/About";
+import Footer from "./Components/Footer";
+import PrivacyPolicy from "./Pages/PrivacyPolicy";
+import TermsCondition from "./Pages/Terms&Conditon";
+import FAQs from "./Pages/FAQs";
+import ScrollToTop from "./Components/ScrollToTop";
+import Signup from "./Pages/Signup";
+import Login from "./Pages/Login";
+import Contact from "./Pages/Contact";
+import SecurityApproach from "./Pages/SecurityApproach";
+import GetStarted from "./Pages/GetStarted";
+import Project from "./Pages/Project";
+import Page1 from "./Pages/TeamPage1";
+import Page2 from "./Pages/TeamPage2";
+import Page3 from "./Pages/TeamPage3";
+import Page4 from "./Pages/TeamPage4";
+import Page5 from "./Pages/TeamPage5";
+import Page6 from "./Pages/TeamPage6";
+
 function App() {
   return (
     <BrowserRouter>
@@ -35,4 +60,5 @@ function App() {
     </BrowserRouter>
   );
 }
+
 export default App;
