@@ -1,8 +1,10 @@
 // src/Pages/Login.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -12,11 +14,38 @@ const Login = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("User Login Data:", formData);
-    alert("Login successful!"); // replace with actual authentication
-    setFormData({ email: "", password: "" });
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message);
+        return;
+      }
+
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data));
+
+      alert("Login successful!!");
+
+      setFormData({ email: "", password: "" });
+
+      navigate("/");
+
+    } catch (error) {
+      console.error("Login error:", error);
+      alert("Server error. Please try again.");
+    }
   };
 
   return (
