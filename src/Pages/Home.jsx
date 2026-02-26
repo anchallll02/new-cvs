@@ -14,7 +14,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="overflow-hidden -mt-[30px]">
+    <div className="overflow-hidden ">
       
       {/* ================= HERO SECTION ================= */}
       <section
@@ -213,4 +213,4 @@ const ServiceCard = ({ image, title, description, link }) => (
       </Link>
     </div>
   </div>
-);
+);  
