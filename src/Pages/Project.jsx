@@ -229,7 +229,7 @@ export default function Projects({ preview = false }) {
   }
 
   return (
-    <div className="pt-24 py-12 min-h-screen bg-slate-100 w-full">
+    <div className="pt-16 pb-16 bg-slate-100 w-full">
       
       {/* HERO SECTION */}
       {!preview && (
