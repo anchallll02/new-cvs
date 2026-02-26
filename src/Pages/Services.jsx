@@ -469,7 +469,7 @@ const Services = () => {
 
       {/* SINGLE DETAIL PAGE */}
       {activeService && (
-        <div className="bg-slate-50 min-h-screen">
+        <div className="bg-slate-50">
           {/* Hero */}
           <div className="relative h-[320px] w-full overflow-hidden">
             <img
@@ -499,7 +499,7 @@ const Services = () => {
           </div>
 
           {/* Content */}
-          <section className="py-20 px-6">
+          <section className="py-14 px-6">
             <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-12 items-stretch">
               {/* LEFT */}
               <div className="lg:col-span-2 space-y-10">
