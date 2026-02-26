@@ -403,7 +403,7 @@ const Services = () => {
       {!activeService && (
         <>
           {/* Hero Section */}
-          <section className="bg-gradient-to-br from-white via-[#f4f8fc] to-[#e6f0fa] pt-24 pb-20 px-6 border-b border-slate-200">
+          <section className="bg-gradient-to-br from-white via-[#f4f8fc] to-[#e6f0fa] pt-16 lg:pt-20 pb-14 lg:pb-16 px-6 border-b border-slate-200">
             <div className="max-w-7xl mx-auto">
               <span className="text-sm uppercase tracking-widest text-[#163d82] font-semibold">
                 Our Services
@@ -422,7 +422,7 @@ const Services = () => {
           </section>
 
           {/* Services Grid */}
-          <section className="py-10 px-6 bg-white">
+          <section className="pt-8 pb-12 px-6 bg-white">
             <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, index) => (
                 <div
