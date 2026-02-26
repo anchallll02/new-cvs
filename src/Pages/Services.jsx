@@ -422,7 +422,7 @@ const Services = () => {
           </section>
 
           {/* Services Grid */}
-          <section className="py-20 px-6 bg-white">
+          <section className="py-10 px-6 bg-white">
             <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service, index) => (
                 <div
