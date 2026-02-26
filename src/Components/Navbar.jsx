@@ -70,7 +70,7 @@ const Navbar = () => {
         </NavLink>
 
         {/* DESKTOP MENU */}
-        <ul className="hidden lg:flex gap-6 lg:gap-8 ml-8 lg:ml-12 font-medium text-[#0b2a5b] whitespace-nowrap">
+        <ul className="hidden md:flex gap-6 lg:gap-8 ml-8 lg:ml-12 font-medium text-[#0b2a5b] whitespace-nowrap">
           {menuItems.map((item) => (
             <li key={item.name}>
               <NavLink
@@ -89,7 +89,7 @@ const Navbar = () => {
         </ul>
 
         {/* RIGHT SIDE DESKTOP */}
-        <div className="ml-auto hidden lg:flex items-center gap-3 xl:gap-4 shrink-0">
+        <div className="ml-auto hidden md:flex items-center gap-4">
           
           {/* Search */}
           <div className="relative flex items-center">
@@ -123,7 +123,7 @@ const Navbar = () => {
 
         {/* MOBILE MENU BUTTON */}
         <button
-          className="ml-auto lg:hidden text-2xl text-[#0b2a5b]"
+          className="ml-auto md:hidden text-2xl text-[#0b2a5b]"
           onClick={() => setOpen(!open)}
         >
           {open ? <FaTimes /> : <FaBars />}
@@ -134,7 +134,7 @@ const Navbar = () => {
 
       {/* MOBILE MENU */}
     {open && (
-      <div className="lg:hidden absolute top-full left-0 w-full 
+      <div className="md:hidden absolute top-full left-0 w-full 
       bg-white border-t px-6 py-6 space-y-6 
       text-[#0b2a5b] font-medium shadow-xl">
 
@@ -146,7 +146,7 @@ const Navbar = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-            className="pl-9 pr-3 py-1.5 w-32 lg:w-40 rounded-full border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a5b] text-sm min-w-0"
+            className="w-full outline-none text-sm"
           />
           <FaSearch
             onClick={handleSearch}
