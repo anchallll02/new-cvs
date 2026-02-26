@@ -499,7 +499,7 @@ const Services = () => {
           </div>
 
           {/* Content */}
-          <section className="py-14 px-6">
+          <section className="pt-10 pb-12 px-6">
             <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-12 items-stretch">
               {/* LEFT */}
               <div className="lg:col-span-2 space-y-10">
