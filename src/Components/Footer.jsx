@@ -107,7 +107,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-3">
                 <Phone size={18} className="text-[#0b2a5b]" />
-                +91 52231 53884
+                 052231 53884
               </li>
             </ul>
           </div>
