@@ -9,60 +9,17 @@ const Contact = () => {
     phone: "",
     message: "",
   });
-  const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState("");
-  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const token = localStorage.getItem("token");
-    if (!token) {
-      alert("Please login first to submit your inquiry.");
-      return;
-    }
-
-    setLoading(true);
-    setSuccess("");
-    setError("");
-
-    try {
-      const response = await fetch("http://localhost:5000/api/inquiry", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({
-          title: formData.name,
-          description: `
-Email: ${formData.email}
-Phone: ${formData.phone}
-Message: ${formData.message}
-          `,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setError(data.message || "Submission failed");
-        setLoading(false);
-        return;
-      }
-
-      setSuccess("Inquiry submitted successfully ✅");
-      setFormData({ name: "", email: "", phone: "", message: "" });
-      setLoading(false);
-    } catch (err) {
-      console.error(err);
-      setError("Server error. Please try again.");
-      setLoading(false);
-    }
+    setSuccess("Inquiry submitted successfully ✅");
+    setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
   return (
@@ -188,14 +145,12 @@ Message: ${formData.message}
                 ></textarea>
 
                 {success && <p className="text-green-600 text-sm">{success}</p>}
-                {error && <p className="text-red-600 text-sm">{error}</p>}
 
                 <button
                   type="submit"
-                  disabled={loading}
                   className="w-full bg-[#0b2a5b] hover:bg-[#0b2a8b] text-white py-2 rounded-md text-sm font-semibold transition"
                 >
-                  {loading ? "Submitting..." : "Submit Inquiry"}
+                  Submit Inquiry
                 </button>
               </form>
             </div>
