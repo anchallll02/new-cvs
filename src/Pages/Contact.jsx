@@ -10,6 +10,7 @@ const Contact = () => {
     message: "",
   });
   const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,6 +20,7 @@ const Contact = () => {
     e.preventDefault();
 
     setSuccess("Inquiry submitted successfully ✅");
+    setError("");
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
@@ -145,6 +147,7 @@ const Contact = () => {
                 ></textarea>
 
                 {success && <p className="text-green-600 text-sm">{success}</p>}
+                {error && <p className="text-red-600 text-sm">{error}</p>}
 
                 <button
                   type="submit"
