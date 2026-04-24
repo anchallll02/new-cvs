@@ -1,199 +1,254 @@
-import { useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import {
-  FaHome,
-  FaCogs,
-  FaProjectDiagram,
-  FaUsers,
-  FaInfoCircle,
-  FaSignInAlt,
-  FaPhone,
-  FaSearch,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
-import logo from "../assets/Photos/logo.jpg";
+// src/Pages/Contact.jsx
+import React, { useState } from "react";
+import { MapPin, Phone, Mail, Clock, ShieldCheck,ArrowRightCircle } from "lucide-react";
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [query, setQuery] = useState("");
-  const navigate = useNavigate();
+const Contact = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState("");
+  const [error, setError] = useState("");
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const menuItems = [
-    { name: "Home", path: "/", icon: <FaHome /> },
-    { name: "Services", path: "/services", icon: <FaCogs /> },
-    { name: "Projects", path: "/project", icon: <FaProjectDiagram /> },
-    { name: "Team", path: "/tp1", icon: <FaUsers /> },
-    { name: "About Us", path: "/about", icon: <FaInfoCircle /> },
-  ];
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  const handleSearch = () => {
-    if (!query.trim()) return;
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("Please login first to submit your inquiry.");
+      return;
+    }
 
-    const match = menuItems.find((item) =>
-      item.name.toLowerCase().includes(query.toLowerCase())
-    );
+    setLoading(true);
+    setSuccess("");
+    setError("");
 
-    if (match) {
-      navigate(match.path);
-      setQuery("");
-      setOpen(false);
-    } else {
-      alert("No page found");
+    try {
+      const response = await fetch("http://localhost:5000/api/inquiry", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          title: formData.name,
+          description: `
+Email: ${formData.email}
+Phone: ${formData.phone}
+Message: ${formData.message}
+          `,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        setError(data.message || "Submission failed");
+        setLoading(false);
+        return;
+      }
+
+      setSuccess("Inquiry submitted successfully ✅");
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setLoading(false);
+    } catch (err) {
+      console.error(err);
+      setError("Server error. Please try again.");
+      setLoading(false);
     }
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md"
-          : "bg-white"
-      }`}
-    >
-      <nav className="w-full h-16 sm:h-20 flex items-center px-4 sm:px-6">
-        
-        {/* LOGO */}
-        <NavLink to="/" className="flex items-center gap-2">
-          <img
-            src={logo}
-            alt="Company Logo"
-            className="h-12 sm:h-16 w-auto object-contain"
-          />
-        </NavLink>
+    <section className="py-24 px-6 bg-gradient-to-b from-slate-50 to-slate-100">
+      <div className="max-w-7xl mx-auto">
 
-        {/* DESKTOP MENU */}
-        <ul className="hidden md:flex gap-6 lg:gap-8 ml-8 lg:ml-12 font-medium text-[#0b2a5b] whitespace-nowrap">
-          {menuItems.map((item) => (
-            <li key={item.name}>
-              <NavLink
-                to={item.path}
-                className={({ isActive }) =>
-                  `flex items-center gap-2 transition ${
-                    isActive ? "text-black font-semibold" : ""
-                  }`
-                }
-              >
-                {item.icon}
-                {item.name}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <div className="mb-14 text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+            Connect with Codevirus Security
+          </h2>
+          <p className="text-slate-600 max-w-3xl mx-auto leading-relaxed">
+            We help organizations secure critical infrastructure, protect
+            sensitive data, and manage cyber risk through compliant,
+            intelligence-driven cybersecurity services.
+          </p>
+        </div>
 
-        {/* RIGHT SIDE DESKTOP */}
-        <div className="ml-auto hidden md:flex items-center gap-4">
-          
-          {/* Search */}
-          <div className="relative flex items-center">
-            <FaSearch className="absolute left-3 text-gray-400 text-sm" />
-            <input
-              type="text"
-              placeholder="Search…"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              className="pl-9 pr-3 py-1.5 w-40 rounded-full border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a5b] text-sm"
-            />
+        <div className="bg-white border border-slate-200 rounded-md shadow-sm p-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+            <div className="space-y-7">
+              <div className="flex items-start gap-4">
+                <MapPin size={22} className="text-[#0b2a5b] mt-1" />
+                <div>
+                  <h4 className="font-semibold text-slate-900">Office Location</h4>
+                  <p className="text-slate-600 text-sm">Lucknow, India</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <Mail size={22} className="text-[#0b2a5b] mt-1" />
+                <div>
+                  <h4 className="font-semibold text-slate-900">Business Email</h4>
+                  <a
+                    href="mailto:services@codevirussec.in"
+                    className="text-[#0b2a5b] text-sm hover:underline"
+                  >
+                    services@codevirussec.in
+                    Contact@codevirussec.in
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <Phone size={22} className="text-[#0b2a5b] mt-1" />
+                <div>
+                  <h4 className="font-semibold text-slate-900">Contact Number</h4>
+                  <p className="text-slate-600 text-sm">052231 53884</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <Clock size={22} className="text-[#0b2a5b] mt-1" />
+                <div>
+                  <h4 className="font-semibold text-slate-900">Business Hours</h4>
+                  <p className="text-slate-600 text-sm">
+                    Mon – Fri | 10:00 AM – 6:00 PM
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <h3 className="text-lg font-semibold text-slate-900">
+                Why Choose Our Cybersecurity Services?
+              </h3>
+
+              <div className="flex items-start gap-3">
+                
+              
+              <ul className="space-y-4 list-disc" >
+
+                <li>
+                  <p className="font-semibold text-slate-900 text-sm">
+                    24/7 Monitoring
+                  </p>
+                  <p className="text-slate-600 text-sm">
+                    Round-the-clock monitoring to detect and respond to cyber threats before they impact your business.
+                  </p>
+                </li>
+
+                <li>
+                  <p className="font-semibold text-slate-900 text-sm">
+                    Vulnerability Assessment & Penetration Testing
+                  </p>
+                  <p className="text-slate-600 text-sm">
+                    Identify security weaknesses in networks, applications, and systems before attackers exploit them.
+                  </p>
+                </li>
+
+                <li>
+                  <p className="font-semibold text-slate-900 text-sm">
+                    Network Security & Firewall Protection
+                  </p>
+                  <p className="text-slate-600 text-sm">
+                    Secure enterprise networks with advanced firewall configurations, IDS/IPS deployment, and access control.
+                  </p>
+                </li>
+
+                <li>
+                  <p className="font-semibold text-slate-900 text-sm">
+                    Compliance & Risk Management
+                  </p>
+                  <p className="text-slate-600 text-sm">
+                    Ensure your organization meets industry security standards and regulatory compliance requirements.
+                  </p>
+                </li>
+
+                <li>
+                  <p className="font-semibold text-slate-900 text-sm">
+                    Incident Response & Threat Investigation
+                  </p>
+                  <p className="text-slate-600 text-sm">
+                    Rapid response to security incidents with detailed investigation and mitigation strategies.
+                  </p>
+                </li>
+
+              </ul>
+              
+
+              </div>
+            </div>
+
+            <div className="border border-slate-200 rounded-md p-6 bg-slate-50">
+              <h3 className="text-base font-semibold text-slate-900 mb-4">
+                Request a Security Consultation
+              </h3>
+
+              <form onSubmit={handleSubmit} className="space-y-3">
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder="Full Name"
+                  className="w-full border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-[#0b2a5b]"
+                  required
+                />
+
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="Email Address"
+                  className="w-full border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-[#0b2a5b]"
+                  required
+                />
+
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  placeholder="Phone Number"
+                  className="w-full border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-[#0b2a5b]"
+                  required
+                />
+
+                <textarea
+                  name="message"
+                  rows="3"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder="Briefly describe your requirement"
+                  className="w-full border border-slate-300 px-3 py-2 text-sm resize-none focus:outline-none focus:border-[#0b2a5b]"
+                ></textarea>
+
+                {success && <p className="text-green-600 text-sm">{success}</p>}
+                {error && <p className="text-red-600 text-sm">{error}</p>}
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full bg-[#0b2a5b] hover:bg-[#0b2a8b] text-white py-2 rounded-md text-sm font-semibold transition"
+                >
+                  {loading ? "Submitting..." : "Submit Inquiry"}
+                </button>
+              </form>
+            </div>
+
           </div>
-
-          {/* Login */}
-          <NavLink to="/login">
-            <button className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#0b2a5b] to-[#163d82] text-white font-semibold shadow-lg hover:scale-105 transition">
-              <FaSignInAlt />
-              Login
-            </button>
-          </NavLink>
-
-          {/* Contact */}
-          <NavLink to="/contact">
-            <button className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#0b2a5b] to-[#163d82] text-white font-semibold shadow-lg hover:scale-105 transition">
-              <FaPhone />
-              Contact
-            </button>
-          </NavLink>
         </div>
-
-        {/* MOBILE MENU BUTTON */}
-        <button
-          className="ml-auto md:hidden text-2xl text-[#0b2a5b]"
-          onClick={() => setOpen(!open)}
-        >
-          {open ? <FaTimes /> : <FaBars />}
-        </button>
-      </nav>
-
-      
-
-      {/* MOBILE MENU */}
-    {open && (
-      <div className="md:hidden absolute top-full left-0 w-full 
-      bg-white border-t px-6 py-6 space-y-6 
-      text-[#0b2a5b] font-medium shadow-xl">
-
-        {/* Search */}
-        <div className="flex items-center border rounded-full px-4 py-2">
-          <input
-            type="text"
-            placeholder="Search..."
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-            className="w-full outline-none text-sm"
-          />
-          <FaSearch
-            onClick={handleSearch}
-            className="ml-2 cursor-pointer text-gray-500"
-          />
-        </div>
-
-        {/* Links */}
-        {menuItems.map((item) => (
-          <NavLink
-            key={item.name}
-            to={item.path}
-            onClick={() => setOpen(false)}
-            className="flex items-center gap-3 text-lg py-2 border-b border-slate-100"
-          >
-            {item.icon}
-            {item.name}
-          </NavLink>
-        ))}
-
-        {/* Buttons */}
-        <div className="flex flex-col gap-3 pt-4">
-          <NavLink
-            to="/login"
-            onClick={() => setOpen(false)}
-          >
-            <button className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-[#0b2a5b] to-[#163d82] text-white text-sm font-semibold shadow-md">
-              <FaSignInAlt />
-              Login
-            </button>
-          </NavLink>
-
-          <NavLink
-            to="/contact"
-            onClick={() => setOpen(false)}
-          >
-            <button className="w-full flex items-center justify-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-[#0b2a5b] to-[#163d82] text-white text-sm font-semibold shadow-md">
-              <FaPhone />
-              Contact
-            </button>
-          </NavLink>
-        </div>
-
       </div>
-    )}
-    </header>
+    </section>
   );
 };
 
-export default Navbar;
+export default Contact;
