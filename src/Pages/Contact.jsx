@@ -1,6 +1,6 @@
 // src/Pages/Contact.jsx
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Clock, ShieldCheck,ArrowRightCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ShieldCheck } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -71,7 +71,7 @@ Message: ${formData.message}
 
         <div className="mb-14 text-center">
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            Connect with Codevirus Security
+            Connect with CodeVirus Security
           </h2>
           <p className="text-slate-600 max-w-3xl mx-auto leading-relaxed">
             We help organizations secure critical infrastructure, protect
@@ -101,7 +101,6 @@ Message: ${formData.message}
                     className="text-[#0b2a5b] text-sm hover:underline"
                   >
                     services@codevirussec.in
-                    Contact@codevirussec.in
                   </a>
                 </div>
               </div>
@@ -110,7 +109,7 @@ Message: ${formData.message}
                 <Phone size={22} className="text-[#0b2a5b] mt-1" />
                 <div>
                   <h4 className="font-semibold text-slate-900">Contact Number</h4>
-                  <p className="text-slate-600 text-sm">052231 53884</p>
+                  <p className="text-slate-600 text-sm">+91 9918103909</p>
                 </div>
               </div>
 
@@ -131,58 +130,15 @@ Message: ${formData.message}
               </h3>
 
               <div className="flex items-start gap-3">
-                
-              
-              <ul className="space-y-4 list-disc" >
-
-                <li>
+                <ShieldCheck className="text-[#0b2a5b] mt-1" size={20} />
+                <div>
                   <p className="font-semibold text-slate-900 text-sm">
                     24/7 Monitoring
                   </p>
                   <p className="text-slate-600 text-sm">
-                    Round-the-clock monitoring to detect and respond to cyber threats before they impact your business.
+                    Round-the-clock security monitoring and threat detection.
                   </p>
-                </li>
-
-                <li>
-                  <p className="font-semibold text-slate-900 text-sm">
-                    Vulnerability Assessment & Penetration Testing
-                  </p>
-                  <p className="text-slate-600 text-sm">
-                    Identify security weaknesses in networks, applications, and systems before attackers exploit them.
-                  </p>
-                </li>
-
-                <li>
-                  <p className="font-semibold text-slate-900 text-sm">
-                    Network Security & Firewall Protection
-                  </p>
-                  <p className="text-slate-600 text-sm">
-                    Secure enterprise networks with advanced firewall configurations, IDS/IPS deployment, and access control.
-                  </p>
-                </li>
-
-                <li>
-                  <p className="font-semibold text-slate-900 text-sm">
-                    Compliance & Risk Management
-                  </p>
-                  <p className="text-slate-600 text-sm">
-                    Ensure your organization meets industry security standards and regulatory compliance requirements.
-                  </p>
-                </li>
-
-                <li>
-                  <p className="font-semibold text-slate-900 text-sm">
-                    Incident Response & Threat Investigation
-                  </p>
-                  <p className="text-slate-600 text-sm">
-                    Rapid response to security incidents with detailed investigation and mitigation strategies.
-                  </p>
-                </li>
-
-              </ul>
-              
-
+                </div>
               </div>
             </div>
 
