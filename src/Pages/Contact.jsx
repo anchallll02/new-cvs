@@ -1,6 +1,5 @@
 // src/Pages/Contact.jsx
 import React, { useState } from "react";
-import { MapPin, Phone, Mail, Clock, ShieldCheck } from "lucide-react";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -9,159 +8,79 @@ const Contact = () => {
     phone: "",
     message: "",
   });
+
   const [success, setSuccess] = useState("");
-  const [error, setError] = useState("");
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setSuccess("Inquiry submitted successfully ✅");
-    setError("");
-    setFormData({ name: "", email: "", phone: "", message: "" });
+
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+    });
   };
 
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-slate-50 to-slate-100">
-      <div className="max-w-7xl mx-auto">
+    <div style={{ padding: "40px", maxWidth: "500px", margin: "auto" }}>
+      <h2>Contact Form</h2>
 
-        <div className="mb-14 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            Connect with CodeVirus Security
-          </h2>
-          <p className="text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            We help organizations secure critical infrastructure, protect
-            sensitive data, and manage cyber risk through compliant,
-            intelligence-driven cybersecurity services.
-          </p>
-        </div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Full Name"
+          value={formData.name}
+          onChange={handleChange}
+          required
+          style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
+        />
 
-        <div className="bg-white border border-slate-200 rounded-md shadow-sm p-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+        <input
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+          style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
+        />
 
-            <div className="space-y-7">
-              <div className="flex items-start gap-4">
-                <MapPin size={22} className="text-[#0b2a5b] mt-1" />
-                <div>
-                  <h4 className="font-semibold text-slate-900">Office Location</h4>
-                  <p className="text-slate-600 text-sm">Lucknow, India</p>
-                </div>
-              </div>
+        <input
+          type="tel"
+          name="phone"
+          placeholder="Phone"
+          value={formData.phone}
+          onChange={handleChange}
+          required
+          style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
+        />
 
-              <div className="flex items-start gap-4">
-                <Mail size={22} className="text-[#0b2a5b] mt-1" />
-                <div>
-                  <h4 className="font-semibold text-slate-900">Business Email</h4>
-                  <a
-                    href="mailto:services@codevirussec.in"
-                    className="text-[#0b2a5b] text-sm hover:underline"
-                  >
-                    services@codevirussec.in
-                  </a>
-                </div>
-              </div>
+        <textarea
+          name="message"
+          placeholder="Message"
+          value={formData.message}
+          onChange={handleChange}
+          style={{ width: "100%", marginBottom: "10px", padding: "8px" }}
+        />
 
-              <div className="flex items-start gap-4">
-                <Phone size={22} className="text-[#0b2a5b] mt-1" />
-                <div>
-                  <h4 className="font-semibold text-slate-900">Contact Number</h4>
-                  <p className="text-slate-600 text-sm">+91 9918103909</p>
-                </div>
-              </div>
+        <button type="submit" style={{ padding: "10px", width: "100%" }}>
+          Submit
+        </button>
+      </form>
 
-              <div className="flex items-start gap-4">
-                <Clock size={22} className="text-[#0b2a5b] mt-1" />
-                <div>
-                  <h4 className="font-semibold text-slate-900">Business Hours</h4>
-                  <p className="text-slate-600 text-sm">
-                    Mon – Fri | 10:00 AM – 6:00 PM
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="space-y-6">
-              <h3 className="text-lg font-semibold text-slate-900">
-                Why Choose Our Cybersecurity Services?
-              </h3>
-
-              <div className="flex items-start gap-3">
-                <ShieldCheck className="text-[#0b2a5b] mt-1" size={20} />
-                <div>
-                  <p className="font-semibold text-slate-900 text-sm">
-                    24/7 Monitoring
-                  </p>
-                  <p className="text-slate-600 text-sm">
-                    Round-the-clock security monitoring and threat detection.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="border border-slate-200 rounded-md p-6 bg-slate-50">
-              <h3 className="text-base font-semibold text-slate-900 mb-4">
-                Request a Security Consultation
-              </h3>
-
-              <form onSubmit={handleSubmit} className="space-y-3">
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="Full Name"
-                  className="w-full border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-[#0b2a5b]"
-                  required
-                />
-
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Email Address"
-                  className="w-full border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-[#0b2a5b]"
-                  required
-                />
-
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Phone Number"
-                  className="w-full border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:border-[#0b2a5b]"
-                  required
-                />
-
-                <textarea
-                  name="message"
-                  rows="3"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Briefly describe your requirement"
-                  className="w-full border border-slate-300 px-3 py-2 text-sm resize-none focus:outline-none focus:border-[#0b2a5b]"
-                ></textarea>
-
-                {success && <p className="text-green-600 text-sm">{success}</p>}
-                {error && <p className="text-red-600 text-sm">{error}</p>}
-
-                <button
-                  type="submit"
-                  className="w-full bg-[#0b2a5b] hover:bg-[#0b2a8b] text-white py-2 rounded-md text-sm font-semibold transition"
-                >
-                  Submit Inquiry
-                </button>
-              </form>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
+      {success && <p style={{ color: "green" }}>{success}</p>}
+    </div>
   );
 };
 
