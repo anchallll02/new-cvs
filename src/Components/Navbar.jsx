@@ -58,10 +58,10 @@ const Navbar = () => {
           : "bg-white"
       }`}
     >
-      <nav className="w-full h-16 sm:h-20 flex items-center px-4 sm:px-6">
+      <nav className="max-w-7xl mx-auto h-16 sm:h-20 flex items-center justify-between px-4 sm:px-6">
         
         {/* LOGO */}
-        <NavLink to="/" className="flex items-center gap-2">
+        <NavLink to="/" className="flex items-center gap-2 h-12 sm:h-16 w-auto object-contain min-w-[100px] flex-shrink-0">
           <img
             src={logo}
             alt="Company Logo"
@@ -89,7 +89,7 @@ const Navbar = () => {
         </ul>
 
         {/* RIGHT SIDE DESKTOP */}
-        <div className="ml-auto hidden md:flex items-center gap-4">
+        <div className="ml-auto hidden md:flex items-center gap-4 flex-shrink-0">
           
           {/* Search */}
           <div className="relative flex items-center">
@@ -100,17 +100,17 @@ const Navbar = () => {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-              className="pl-9 pr-3 py-1.5 w-40 rounded-full border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a5b] text-sm"
+              className="pl-9 pr-3 py-1.5 w-60 rounded-full border border-slate-300 focus:outline-none focus:ring-2 focus:ring-[#0b2a5b] text-sm"
             />
           </div>
 
           {/* Login */}
-          <NavLink to="/login">
+          {/* <NavLink to="/login">
             <button className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#0b2a5b] to-[#163d82] text-white font-semibold shadow-lg hover:scale-105 transition">
               <FaSignInAlt />
               Login
             </button>
-          </NavLink>
+          </NavLink> */}
 
           {/* Contact */}
           <NavLink to="/contact">
@@ -169,7 +169,7 @@ const Navbar = () => {
 
         {/* Buttons */}
         <div className="flex flex-col gap-3 pt-4">
-          <NavLink
+          {/* <NavLink
             to="/login"
             onClick={() => setOpen(false)}
           >
@@ -177,7 +177,7 @@ const Navbar = () => {
               <FaSignInAlt />
               Login
             </button>
-          </NavLink>
+          </NavLink> */}
 
           <NavLink
             to="/contact"
